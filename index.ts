@@ -4,27 +4,18 @@ const newGameButton = document.querySelector<HTMLButtonElement>("#new")!;
 const xSizeInput = document.querySelector<HTMLInputElement>("#x-size")!;
 const ySizeInput = document.querySelector<HTMLInputElement>("#y-size")!;
 
-interface Dimension {
-  width: number;
-  height: number;
-}
+const getDimensions = () => ({
+  width: parseInt(xSizeInput.value),
+  height: parseInt(ySizeInput.value),
+});
 
-function getDimensions(): Dimension {
-  return {
-    width: parseInt(xSizeInput.value),
-    height: parseInt(ySizeInput.value),
-  };
-}
-
-const gameboardElements: HTMLDivElement[] = [];
+const gameboardElements: HTMLButtonElement[] = [];
 
 const randomBoolean = (): boolean => Math.random() >= 0.5;
 
 function renderNewGameboard() {
   // clean up the gameboard
-  for (const element of gameboardElements) {
-    element.remove();
-  }
+  gameboardElements.forEach((element) => element.remove());
   gameboardElements.length = 0;
   game.innerHTML = "";
 

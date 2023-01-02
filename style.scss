@@ -5,11 +5,11 @@ button.gameboard-tile {
   height: 50px;
   margin: 2px;
   padding: 0;
-  // remove transition
   transition: background-color 0s ease-in-out;
 
   &:hover {
     background-color: #333;
+    transform: scale(1.05);
   }
 
   &:active {
@@ -18,7 +18,7 @@ button.gameboard-tile {
 }
 
 @media (max-width: 400px) {
-    button.gameboard-tile {
+  button.gameboard-tile {
     width: 40px;
     height: 40px;
   }
@@ -81,7 +81,6 @@ button {
   }
 }
 
-
 input {
   display: inline-block;
   background-color: #000;
@@ -107,16 +106,16 @@ input {
 }
 
 label {
-    display: inline-block;
-    color: #fff;
-    background-color: #000;
-    font-family: sans-serif;
-    padding-left: 1rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    margin: 1rem;
+  display: inline-block;
+  color: #fff;
+  background-color: #000;
+  font-family: sans-serif;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 1rem;
 }
 
 input[type="number"] {
@@ -128,6 +127,7 @@ input[type="number"] {
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
+  appearance: none;
 }
 
 @media (max-width: 600px) {
