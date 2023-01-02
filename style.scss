@@ -51,7 +51,7 @@ main {
 }
 
 #game {
-  padding: 5rem;
+  padding: 1rem;
   border: 1px solid #000;
 }
 
@@ -78,7 +78,7 @@ button {
   }
 }
 
-/** brutalist simple input */
+
 input {
   display: inline-block;
   background-color: #000;
@@ -92,6 +92,7 @@ input {
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  width: 5rem;
 
   &:hover {
     background-color: #333;
@@ -100,6 +101,30 @@ input {
   &:active {
     background-color: #666;
   }
+}
+
+label {
+    display: inline-block;
+    color: #fff;
+    background-color: #000;
+    font-family: sans-serif;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 1rem;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 
 @media (max-width: 600px) {
@@ -113,12 +138,12 @@ input {
     font-size: 1rem;
   }
 
+  label {
+    font-size: 1rem;
+  }
+
   div.gameboard-tile {
     width: 45px;
     height: 45px;
-  }
-
-  #game {
-    padding: 2rem;
   }
 }
