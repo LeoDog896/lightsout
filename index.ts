@@ -32,7 +32,7 @@ function renderNewGameboard() {
 
   // render the new gameboard
   for (let i = 0; i < dimensions.width * dimensions.height; i++) {
-    if (i % dimensions.width === 0) {
+    if (i % dimensions.width === 0 && i !== 0) {
       const newLineBreak = document.createElement("br");
       game.appendChild(newLineBreak);
     }
