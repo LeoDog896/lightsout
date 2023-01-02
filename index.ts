@@ -36,7 +36,7 @@ function renderNewGameboard() {
       const newLineBreak = document.createElement("br");
       game.appendChild(newLineBreak);
     }
-    const newDiv = document.createElement("div");
+    const newDiv = document.createElement("button");
     newDiv.classList.add("gameboard-tile");
     if (randomBoolean()) {
       newDiv.classList.add("gameboard-tile--active");
