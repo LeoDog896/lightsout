@@ -28,7 +28,7 @@ function renderNewGameboard() {
   gameboardElements.length = 0;
   game.innerHTML = "";
 
-  const dimensions = getDimensions()
+  const dimensions = getDimensions();
 
   // render the new gameboard
   for (let i = 0; i < dimensions.width * dimensions.height; i++) {
