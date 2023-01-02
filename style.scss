@@ -14,7 +14,6 @@ div.gameboard-tile {
   }
 }
 
-/** smaller game board for mobile */
 @media (max-width: 600px) {
   div.gameboard-tile {
     width: 25px;
