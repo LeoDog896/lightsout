@@ -36,18 +36,20 @@ function renderNewGameboard() {
       const indexes = [
         i - dimensions.width,
         i + dimensions.width,
-        ...i % dimensions.width !== 0 ? [i - 1] : [],
-        ...i % dimensions.width !== dimensions.width - 1 ? [i + 1] : [],
-        i
-      ]
+        ...(i % dimensions.width !== 0 ? [i - 1] : []),
+        ...(i % dimensions.width !== dimensions.width - 1 ? [i + 1] : []),
+        i,
+      ];
 
       // filter out indexes that are out of bounds
-      const filteredIndexes = indexes.filter(index => index >= 0 && index < dimensions.width * dimensions.height)
+      const filteredIndexes = indexes.filter(
+        (index) => index >= 0 && index < dimensions.width * dimensions.height
+      );
 
       for (const index of filteredIndexes) {
         gameboardElements[index].classList.toggle("gameboard-tile--active");
       }
-    })
+    });
     gameboardElements.push(newDiv);
     game.appendChild(newDiv);
   }
@@ -57,4 +59,4 @@ renderNewGameboard();
 
 newGameButton.addEventListener("click", () => {
   renderNewGameboard();
-})
+});
