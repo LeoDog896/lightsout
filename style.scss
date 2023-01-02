@@ -70,3 +70,27 @@ button {
     background-color: #666;
   }
 }
+
+/** brutalist simple input */
+input {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  border: 0;
+  padding: 1rem 2rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #333;
+  }
+
+  &:active {
+    background-color: #666;
+  }
+}

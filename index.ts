@@ -1,12 +1,20 @@
 const game = document.querySelector<HTMLDivElement>("#game")!;
 const newGameButton = document.querySelector<HTMLButtonElement>("#new")!;
 
+const xSizeInput = document.querySelector<HTMLInputElement>("#x-size")!;
+const ySizeInput = document.querySelector<HTMLInputElement>("#y-size")!;
+
 interface Dimension {
   width: number;
   height: number;
 }
 
-const dimensions: Dimension = { width: 5, height: 5 };
+function getDimensions(): Dimension {
+  return {
+    width: parseInt(xSizeInput.value),
+    height: parseInt(ySizeInput.value),
+  };
+}
 
 const gameboardElements: HTMLDivElement[] = [];
 
@@ -19,6 +27,8 @@ function renderNewGameboard() {
   }
   gameboardElements.length = 0;
   game.innerHTML = "";
+
+  const dimensions = getDimensions()
 
   // render the new gameboard
   for (let i = 0; i < dimensions.width * dimensions.height; i++) {

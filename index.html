@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lights Out</title>
+    <meta name="description" content="A simple game of lights out" />
     <link rel="stylesheet" href="style.scss" />
     <!-- this may or may not have been a bad idea -->
     <script src="index.ts" type="module" defer></script>
@@ -13,6 +14,8 @@
     <main>
       <div id="game"></div>
       <button id="new">New Game</button>
+      <input type="number" id="x-size" placeholder="X size" value=5 min="2" />
+      <input type="number" id="y-size" placeholder="Y size" value=5 min="2" />
     </main>
   </body>
 </html>
