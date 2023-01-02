@@ -14,10 +14,10 @@ div.gameboard-tile {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   div.gameboard-tile {
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -53,12 +53,6 @@ main {
 #game {
   padding: 5rem;
   border: 1px solid #000;
-}
-
-@media (max-width: 600px) {
-  #game {
-    padding: 2rem;
-  }
 }
 
 button {
@@ -105,5 +99,26 @@ input {
 
   &:active {
     background-color: #666;
+  }
+}
+
+@media (max-width: 600px) {
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  input {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  div.gameboard-tile {
+    width: 45px;
+    height: 45px;
+  }
+
+  #game {
+    padding: 2rem;
   }
 }
