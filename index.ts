@@ -32,25 +32,43 @@ function renderNewGameboard() {
     if (randomBoolean()) {
       newDiv.classList.add("gameboard-tile--active");
     }
+
+    // get indexes for all neighbors and self
+    const indexes = [
+      i - dimensions.width,
+      i + dimensions.width,
+      i % dimensions.width !== 0 ? i - 1 : null,
+      i % dimensions.width !== dimensions.width - 1 ? i + 1 : null,
+      i,
+    ];
+
+    // filter out indexes that are out of bounds
+    const filteredIndexes = indexes.filter(
+      (index) =>
+        index != null &&
+        index >= 0 &&
+        index < dimensions.width * dimensions.height
+    ) as number[];
+
     newDiv.addEventListener("click", () => {
-      // get indexes for all neighbors and self
-      const indexes = [
-        i - dimensions.width,
-        i + dimensions.width,
-        ...(i % dimensions.width !== 0 ? [i - 1] : []),
-        ...(i % dimensions.width !== dimensions.width - 1 ? [i + 1] : []),
-        i,
-      ];
-
-      // filter out indexes that are out of bounds
-      const filteredIndexes = indexes.filter(
-        (index) => index >= 0 && index < dimensions.width * dimensions.height
-      );
-
       for (const index of filteredIndexes) {
         gameboardElements[index].classList.toggle("gameboard-tile--active");
       }
     });
+
+    // add arrow navigation
+    newDiv.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowUp" && indexes[0]) {
+        gameboardElements[indexes[0]].focus();
+      } else if (event.key === "ArrowDown" && indexes[1]) {
+        gameboardElements[indexes[1]].focus();
+      } else if (event.key === "ArrowLeft" && indexes[2]) {
+        gameboardElements[indexes[2]].focus();
+      } else if (event.key === "ArrowRight" && indexes[3]) {
+        gameboardElements[indexes[3]].focus();
+      }
+    });
+
     gameboardElements.push(newDiv);
     game.appendChild(newDiv);
   }
