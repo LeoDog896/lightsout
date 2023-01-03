@@ -1,6 +1,8 @@
 const game = document.querySelector<HTMLDivElement>("#game")!;
 const newGameButton = document.querySelector<HTMLButtonElement>("#new")!;
 
+const moves = document.querySelector<HTMLParagraphElement>("#moveContent")!;
+
 const xSizeInput = document.querySelector<HTMLInputElement>("#x-size")!;
 const ySizeInput = document.querySelector<HTMLInputElement>("#y-size")!;
 
@@ -20,6 +22,8 @@ function renderNewGameboard() {
   game.innerHTML = "";
 
   const dimensions = getDimensions();
+
+  moves.innerText = `0`;
 
   // render the new gameboard
   for (let i = 0; i < dimensions.width * dimensions.height; i++) {
@@ -51,6 +55,8 @@ function renderNewGameboard() {
     ) as number[];
 
     newDiv.addEventListener("click", () => {
+      if (filteredIndexes.length === 0) return;
+      moves.innerText = `${parseInt(moves.innerText) + 1}`;
       for (const index of filteredIndexes) {
         gameboardElements[index].classList.toggle("gameboard-tile--active");
       }
