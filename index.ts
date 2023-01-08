@@ -6,10 +6,39 @@ const moves = document.querySelector<HTMLParagraphElement>("#moveContent")!;
 const xSizeInput = document.querySelector<HTMLInputElement>("#x-size")!;
 const ySizeInput = document.querySelector<HTMLInputElement>("#y-size")!;
 
-const getDimensions = () => ({
+interface Dimension {
+  width: number;
+  height: number;
+}
+
+const getDimensions = (): Dimension => ({
   width: parseInt(xSizeInput.value),
   height: parseInt(ySizeInput.value),
 });
+
+function generateRandomGameboard(): boolean[] {
+  // generate a random gameboard that simulates random clicks on a 2d boolean area
+  const dimensions = getDimensions();
+  const gameboard: boolean[] = Array(dimensions.width * dimensions.height).fill(true);
+  for (let i = 0; i < dimensions.width * dimensions.height; i++) {
+    if (randomBoolean()) {
+      const neighborIndexes = [
+        i - dimensions.width,
+        i + dimensions.width,
+        i % dimensions.width !== 0 ? i - 1 : null,
+        i % dimensions.width !== dimensions.width - 1 ? i + 1 : null,
+        i,
+      ];
+      for (const index of neighborIndexes) {
+        if (index != null && index >= 0 && index < dimensions.width * dimensions.height) {
+          gameboard[index] = !gameboard[index];
+        }
+      }
+    }
+  }
+  return gameboard;
+
+}
 
 const gameboardElements: HTMLButtonElement[] = [];
 
@@ -25,6 +54,8 @@ function renderNewGameboard() {
 
   moves.innerText = `0`;
 
+  const gameboard = generateRandomGameboard();
+
   // render the new gameboard
   for (let i = 0; i < dimensions.width * dimensions.height; i++) {
     if (i % dimensions.width === 0 && i !== 0) {
@@ -33,7 +64,7 @@ function renderNewGameboard() {
     }
     const newDiv = document.createElement("button");
     newDiv.classList.add("gameboard-tile");
-    if (randomBoolean()) {
+    if (gameboard[i]) {
       newDiv.classList.add("gameboard-tile--active");
     }
 
